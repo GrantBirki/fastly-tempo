@@ -4,6 +4,12 @@ This is based off the New Relic blessed way to get your Fastly metrics into Insi
 
 In order to use the Fastly to Insights Docker image, you will need an active New Relic account with Insights, an active Fastly account with Read access, a New Relic Insights Insert key and a Fastly API Key.
 
+## Dashboard
+
+Here is an example of a 4xx alert dashboard that can be created in New Relic from the `Fastly to Insights` container:
+
+![New Relic Dashboard with Fastly Metrics](assets/img/panel.png)
+
 ## Quick Start
 
 ### Using Docker-Compose (Preferred)
