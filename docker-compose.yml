@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  fastly-to-insights:
+    container_name: fastly-to-insights
+    env_file: 
+      - creds.env
+      - config.env
+    restart: always
+    build: ./
+    command: python app.py
