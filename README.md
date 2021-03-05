@@ -70,7 +70,7 @@ These are optional:
 You have two options for passing in Fastly Services to the Docker container.
 
 1. Passing in only the **ServiceId**
-2. Passing in both the **ServiceId** and the **ServiceName**
+2. Passing in both the **ServiceName** and the **ServiceId**
 
 Note: In both examples, one serivce has millions of 200s and the other has none.
 
@@ -118,7 +118,7 @@ Here is what this will look like in New Relic:
 
 ![ServieId Only Image](assets/img/friendly-service-name.png)
 
-Note: You can mix `method 1` and `method 2` together. In the `SERVICES` variable. I would not recommend doing this though
+Note: You can mix `method 1` and `method 2` together. In the `SERVICES` variable. I would not recommend doing this though.
 
 ## New Relic Queries to View Data
 
