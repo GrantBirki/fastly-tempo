@@ -4,19 +4,37 @@ import zlib
 import json
 import time
 import sys
+from traceback import print_exc
 
-ACCOUNT_ID = os.environ['ACCOUNT_ID']
-INSERT_KEY = os.environ['INSERT_KEY']
-FASTLY_KEY = os.environ['FASTLY_KEY']
+# Sets API keys and account IDs for GET/POST requests
+try:
+    ACCOUNT_ID = os.environ['ACCOUNT_ID']
+    INSERT_KEY = os.environ['INSERT_KEY']
+    FASTLY_KEY = os.environ['FASTLY_KEY']
+except:
+    print('[!] Error: Please ensure you are providing the following ENV VARS: ACCOUNT_ID, INSERT_KEY, and FASTLY_KEY.')
+    sys.stdout.flush()
+    sys.exit(1)
+
+# Sets static variables for URLs and headers
+insights_url = f'https://insights-collector.newrelic.com/v1/accounts/{ACCOUNT_ID}/events'
+nr_headers = {'content-encoding': 'deflate', 'X-Insert-Key': INSERT_KEY, 'Content-Type': 'application/json"'}
+fastly_headers = {'Content-Type': 'application/json', 'Fastly-Key': FASTLY_KEY}
 
 # This will create 1440 events per day for each service, or 10080 events per week. Interval is in seconds.
-try: INTERVAL = int(os.environ['INTERVAL'])
-except KeyError: INTERVAL = 60
-try: SILENT = os.environ['SILENT']
-except KeyError: SILENT = False
+try:
+    INTERVAL = int(os.environ['INTERVAL'])
+except KeyError:
+    INTERVAL = 60
+try:
+    SILENT = os.environ['SILENT']
+except KeyError:
+    SILENT = False
 
-if SILENT == 'True': SILENT = True
-else: SILENT = False
+if SILENT == 'True':
+    SILENT = True
+else:
+    SILENT = False
 
 # A limitation of Fastly is that you have to query one service at a time. I chose to create an array of my service ids, and loop through them.
 try:
@@ -143,43 +161,42 @@ def main():
         sys.stdout.flush()
 
     while True:
-        for service_map in LIST_OF_SERVICES:
+        try:
+            for service_map in LIST_OF_SERVICES:
 
-            serviceName, serviceId = serviceExtractor(service_map)
+                serviceName, serviceId = serviceExtractor(service_map)
 
-            aggregated, timestamp, fastly_status = pollFromFastly(serviceId)
-            if serviceName: message = batch(aggregated, serviceName)
-            else: message = batch(aggregated, serviceId)
-            nr_status = sendToInsights(message)
+                aggregated, timestamp, fastly_status = pollFromFastly(serviceId)
+                if serviceName: message = batch(aggregated, serviceName)
+                else: message = batch(aggregated, serviceId)
+                nr_status = sendToInsights(message)
 
-            if not SILENT:
+                if not SILENT:
 
-                if serviceName:
-                    print(f'[#] Service: {serviceName} [{serviceId}] | Fstatus: {fastly_status} | NRstatus: {nr_status} | Timestamp: {timestamp}')
-                else:
-                    print(f'[#] Service: {serviceId} | Fstatus: {fastly_status} | NRstatus: {nr_status} | Timestamp: {timestamp}')
-                
-                sys.stdout.flush()
+                    if serviceName:
+                        print(f'[#] Service: {serviceName} [{serviceId}] | Fstatus: {fastly_status} | NRstatus: {nr_status} | Timestamp: {timestamp}')
+                    else:
+                        print(f'[#] Service: {serviceId} | Fstatus: {fastly_status} | NRstatus: {nr_status} | Timestamp: {timestamp}')
+                    
+                    sys.stdout.flush()
 
-        time.sleep(INTERVAL)
+            time.sleep(INTERVAL)
+        except:
+            print_exc()
 
 def pollFromFastly(serviceId):
     global timestamp
     timestamp = 0
-    fastly_url = f"https://rt.fastly.com/v1/channel/{serviceId}/ts/{timestamp}"
-    headers = {
-      'Content-Type': 'application/json',
-      "Fastly-Key": FASTLY_KEY,
-    }
 
-    r = requests.get(fastly_url, headers=headers)
+    fastly_url = f'https://rt.fastly.com/v1/channel/{serviceId}/ts/{timestamp}'
+    r = requests.get(fastly_url, headers=fastly_headers)
 
     data = r.json()
 
     timestamp = data['Timestamp']
 
     try:
-        # If not metrics were recorded, None types are returned except for the timestamp
+        # If no metrics were recorded, None types are returned except for the timestamp
         aggregated = data['Data'][0]['aggregated']
     except IndexError:
         return None, timestamp, None
@@ -524,12 +541,13 @@ def serviceExtractor(service_map):
     return serviceName, serviceId
 
 def sendToInsights(message):
-    insights_url = f'https://insights-collector.newrelic.com/v1/accounts/{ACCOUNT_ID}/events'
+    '''
+    Sends a POST request with aggregated data to New Relic Insights
+    If the request fails, it is printed out and returns "failed"
+    '''
+
     data = zlib.compress(json.dumps(message).encode('utf-8'))
-    headers = {'content-encoding': 'deflate', 'X-Insert-Key': INSERT_KEY, 'Content-Type': 'application/json"'}
-
-    r = requests.post(insights_url, headers=headers, data=data)
-
+    r = requests.post(insights_url, headers=nr_headers, data=data)
     return r.status_code
 
 if __name__ == "__main__":
