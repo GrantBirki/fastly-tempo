@@ -17,10 +17,10 @@ jobs:
           repository: grantbirki/fastly-to-insights
           tag_with_ref: true
       - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
+        uses: docker/build-push-action@v2
         with:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
           registry: docker.pkg.github.com
-          repository: GrantBirki/fastly-to-insights
+          repository: grantbirki/fastly-to-insights
           tag_with_ref: true
