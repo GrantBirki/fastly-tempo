@@ -14,6 +14,8 @@ Here is an example of a 4xx alert dashboard that can be created in New Relic fro
 
 ## Quick Start
 
+Grab the image from [DockerHub](https://hub.docker.com/r/grantbirki/fastly-to-insights) 🐳
+
 ### Using Docker-Compose (Preferred)
 
 Using Docker-Compose to run this image is extremely easy.
