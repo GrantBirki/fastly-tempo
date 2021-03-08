@@ -133,37 +133,37 @@ Here are some helpful queries in New Relic to start viewing your metrics:
 * 4xx Status codes by service
 
     ```sql
-    SELECT sum(status_4xx) FROM LogAggregate since 6 hours ago TIMESERIES 10 minutes facet service
+    SELECT average(status_4xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * 5xx Status codes by service
 
     ```sql
-    SELECT sum(status_5xx) FROM LogAggregate since 6 hours ago TIMESERIES 10 minutes facet service
+    SELECT average(status_5xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * 2xx Status codes by service
 
     ```sql
-    SELECT sum(status_2xx) FROM LogAggregate since 6 hours ago TIMESERIES 10 minutes facet service
+    SELECT average(status_2xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * The number of cache hits by service
 
     ```sql
-    SELECT sum(hits) FROM LogAggregate since 6 hours ago TIMESERIES 10 minutes facet service
+    SELECT average(hits) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * The number of cache misses by service
 
     ```sql
-    SELECT sum(miss) FROM LogAggregate since 6 hours ago TIMESERIES 10 minutes facet service
+    SELECT average(miss) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * The total amount of time spent processing cache misses (in seconds)
 
     ```sql
-    SELECT sum(miss_time) FROM LogAggregate since 6 hours ago TIMESERIES 10 minutes facet service
+    SELECT average(miss_time) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 To see more info on these queries, check out the blog post by New Relic [here](https://blog.newrelic.com/engineering/monitor-fastly-data/).
