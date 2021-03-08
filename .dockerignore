@@ -1,5 +1,10 @@
-build.sh
+Makefile
 creds.env
+config.env
+assets
+.github
+LICENSE
+.git
 .vscode
 services.env
 docker-compose.yml
