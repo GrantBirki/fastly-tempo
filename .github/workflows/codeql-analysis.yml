@@ -19,6 +19,8 @@ on:
   #   branches: [ main ]
   schedule:
     - cron: '34 15 * * 1'
+  release:
+    types: [published]
 
 jobs:
   analyze:
