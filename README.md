@@ -1,6 +1,6 @@
 # Fastly to Insights 🚀
 
-test
+test 2
 
 [![security-checks Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/security-checks/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions) [![python-tests Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/python-tests/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions) [![docker-build Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/docker-build/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions) [![codeQL Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/codeQL/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions)
 
