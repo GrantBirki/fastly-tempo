@@ -36,6 +36,6 @@ jobs:
     - name: Test with pylint
       run: |
         sudo apt install pylint -y
-        pylint -E app.py || echo "Failure - Pylint Status Code: $?" && exit 1
+        pylint -E app.py || { echo "Failure! - Python Error Checks Failed - $?" ; exit 1; }
         echo "Success! - Python Error Checks Passed"
 
