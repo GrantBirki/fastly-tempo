@@ -37,4 +37,6 @@ jobs:
       run: |
         sudo apt install pylint -y
         pylint -E app.py
-        if [ $? -ne 0 ]; then echo "Success! - No Python Errors Detected"
+        if [ $? -ne 0 ]; then echo "Failure! - Python Errors Detected" && exit 1 fi
+        echo "Success! - No Python Errors Detected"
+
