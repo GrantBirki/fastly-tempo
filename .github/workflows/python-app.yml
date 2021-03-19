@@ -35,5 +35,6 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Test with pylint
       run: |
-        sudo apt install pylint
+        sudo apt install pylint -y
         pylint -E app.py
+        if [ $? -ne 0 ]; then echo "Success! - No Python Errors Detected"
