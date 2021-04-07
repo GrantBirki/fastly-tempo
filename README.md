@@ -37,7 +37,7 @@ Using Docker-Compose to run this image is extremely easy.
     SERVICES=ServiceName1:ServiceId1 ServiceName2:ServiceId2 ...
     ```
 
-3. Run: `make build`
+3. Run: `make run`
 
 4. ✔️ Log into New Relic and view your logs!
 
@@ -130,6 +130,18 @@ Note: You can mix `method 1` and `method 2` together. In the `SERVICES` variable
 
 Here are some helpful queries in New Relic to start viewing your metrics:
 
+* 2xx Status codes by service
+
+    ```sql
+    SELECT average(status_2xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
+    ```
+
+* 3xx Status codes by service
+
+    ```sql
+        SELECT average(status_3xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
+    ```
+
 * 4xx Status codes by service
 
     ```sql
@@ -140,12 +152,6 @@ Here are some helpful queries in New Relic to start viewing your metrics:
 
     ```sql
     SELECT average(status_5xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
-    ```
-
-* 2xx Status codes by service
-
-    ```sql
-    SELECT average(status_2xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * The number of cache hits by service
