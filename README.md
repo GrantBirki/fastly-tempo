@@ -24,15 +24,15 @@ Using Docker-Compose to run this image is extremely easy.
 
 1. Create a file named `creds.env` at the root of this repo with the following contents:
 
-    ```dosini
-    INSERT_KEY=XXXXXXXXXXXXXX
+    ```ini
     ACCOUNT_ID=#######
+    INSERT_KEY=XXXXXXXXXXXXXX
     FASTLY_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXX
     ```
 
 2. Add your services to `config.env`
 
-    ```dosini
+    ```ini
     ...
     SERVICES=ServiceName1:ServiceId1 ServiceName2:ServiceId2 ...
     ```
@@ -46,20 +46,22 @@ Using Docker-Compose to run this image is extremely easy.
 1. Build: `docker build -t fastly-to-insights .`
 2. Run:
 
-    ```#!/bin/bash
-    $ docker run \
-    -e ACCOUNT_ID='yourNewRelicAccountId' \
-    -e FASTLY_KEY='yourFastlyKey' \
-    -e INSERT_KEY='yourNewRelicInsertKey' \
-    -e SERVICES='ServiceId1 ServiceId2 ...' \
-    fastly-to-insights
+    ```bash
+    docker run \
+      -e ACCOUNT_ID='yourNewRelicAccountId' \
+      -e FASTLY_KEY='yourFastlyKey' \
+      -e INSERT_KEY='yourNewRelicInsertKey' \
+      -e SERVICES='ServiceId1 ServiceId2 ...' \
+      fastly-to-insights
     ```
 
 ## How to use this image
 
 Before you get started, make sure that you have a [Fastly API Key](https://docs.fastly.com/guides/account-management-and-security/using-api-tokens) and a [New Relic Insert Key](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/insert-custom-events-insights-api#register).
 
-The Fastly to Insights image is configured by environment variables. These are mandatory:
+The Fastly to Insights image is configured by environment variables.
+
+These are required:
 
 * `ACCOUNT_ID`
 * `FASTLY_KEY`
@@ -68,8 +70,10 @@ The Fastly to Insights image is configured by environment variables. These are m
 
 These are optional:
 
-* `SILENT` - Print output True/False
-* `INTERVAL` - Interval in seconds to poll data from Fastly
+* `SILENT` - Print output True/False. Default: `False`
+* `INTERVAL` - Interval in seconds to poll data from Fastly. Default: `1`
+
+Note: It is suggested to use a minimum `INTERVAL` of `1` second to avoid publishing metrics for the same second twice.
 
 ### Fastly Services
 
@@ -86,8 +90,8 @@ If you are just using the ServiceId method, `SERVICES` needs to be a string with
 
 Example:
 
-```#!/bin/bash
-$ docker run \
+```bash
+docker run \
   -e ACCOUNT_ID='yourNewRelicAccountId' \
   -e FASTLY_KEY='yourFastlyKey' \
   -e INSERT_KEY='yourNewRelicInsertKey' \
@@ -109,8 +113,8 @@ The benefit to using this method is you can name the service whatever you want. 
 
 Example:
 
-```#!/bin/bash
-$ docker run \
+```bash
+docker run \
   -e ACCOUNT_ID='yourNewRelicAccountId' \
   -e FASTLY_KEY='yourFastlyKey' \
   -e INSERT_KEY='yourNewRelicInsertKey' \
@@ -133,43 +137,43 @@ Here are some helpful queries in New Relic to start viewing your metrics:
 * 2xx Status codes by service
 
     ```sql
-    SELECT average(status_2xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
+    SELECT average(status_2xx) FROM FastlyLogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * 3xx Status codes by service
 
     ```sql
-        SELECT average(status_3xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
+        SELECT average(status_3xx) FROM FastlyLogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * 4xx Status codes by service
 
     ```sql
-    SELECT average(status_4xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
+    SELECT average(status_4xx) FROM FastlyLogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * 5xx Status codes by service
 
     ```sql
-    SELECT average(status_5xx) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
+    SELECT average(status_5xx) FROM FastlyLogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * The number of cache hits by service
 
     ```sql
-    SELECT average(hits) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
+    SELECT average(hits) FROM FastlyLogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * The number of cache misses by service
 
     ```sql
-    SELECT average(miss) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
+    SELECT average(miss) FROM FastlyLogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 * The total amount of time spent processing cache misses (in seconds)
 
     ```sql
-    SELECT average(miss_time) FROM LogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
+    SELECT average(miss_time) FROM FastlyLogAggregate since 30 minutes ago TIMESERIES 15 minutes facet service
     ```
 
 To see more info on these queries, check out the blog post by New Relic [here](https://blog.newrelic.com/engineering/monitor-fastly-data/).
