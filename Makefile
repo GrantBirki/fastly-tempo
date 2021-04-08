@@ -1,7 +1,8 @@
-make build:
+run:
+	@echo "\e[34m[#] Killing old docker processes\e[0m"
+	@docker-compose rm -fs || exit 1
 
-	echo "[#] Killing old docker processes"
-	docker-compose rm -fs
+	@echo "\e[34m[#] Building docker container\e[0m"
+	@docker-compose up --build -d || exit 1
 
-	echo "[#] Building docker containers"
-	docker-compose up --build -d
+	@echo "\e[32m[#] Fastly-to-Insights container is now running!\e[0m"
