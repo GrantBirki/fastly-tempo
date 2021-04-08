@@ -26,7 +26,7 @@ except:
 try:
     INTERVAL = int(os.environ['INTERVAL'])
 except KeyError:
-    INTERVAL = 0
+    INTERVAL = 1
 
 # Get Silent ENV to determine if info will be printed
 try:
@@ -157,7 +157,7 @@ def batch(service, aggregated_list):
             aggregate = aggregate['aggregated']
 
             service.message = {
-                "eventType":                           "LogAggregate",
+                "eventType":                           "FastlyLogAggregate",
                 "service":                             service.display_name,
                 "num_requests":                        service.message['num_requests'] + aggregate.get('requests', 0),
                 "num_tls":                             service.message['num_tls'] + aggregate.get('num_tls', 0),
