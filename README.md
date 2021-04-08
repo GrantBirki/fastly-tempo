@@ -2,19 +2,23 @@
 
 [![security-checks Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/security-checks/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions) [![python-tests Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/python-tests/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions) [![docker-build Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/docker-build/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions) [![codeQL Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/codeQL/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions)
 
-Get all your Fastly metrics into New Relic with ease!
+Monitor, Alert, and Display all your Fastly Metrics in Real-Time!
 
-This is based off the New Relic blessed way to get your Fastly metrics into Insights, packaged as a Docker container image for ease of use!
+This is based off the New Relic blessed way to get your Fastly metrics into New Relic Insights, packaged as a Docker container image for ease of use!
 
 In order to use the Fastly to Insights Docker image, you will need an active New Relic account with Insights, an active Fastly account with Read access, a New Relic Insights Insert key and a Fastly API Key.
 
-## Dashboard
+## Dashboard 🗺️
 
 Here is an example of a 4xx alert dashboard that can be created in New Relic from the `Fastly to Insights` container:
 
-![New Relic Dashboard with Fastly Metrics](assets/img/panel.png)
+<!-- markdownlint-disable no-inline-html -->
+<p align="center">
+  <img src="assets/img/panel.png"/>
+</p>
+<!-- markdownlint-enable no-inline-html -->
 
-## Quick Start
+## Quick Start ⭐
 
 Grab the image from [DockerHub](https://hub.docker.com/r/grantbirki/fastly-to-insights) 🐳
 
@@ -55,7 +59,7 @@ Using Docker-Compose to run this image is extremely easy.
       fastly-to-insights
     ```
 
-## How to use this image
+## How to use this image 📚
 
 Before you get started, make sure that you have a [Fastly API Key](https://docs.fastly.com/guides/account-management-and-security/using-api-tokens) and a [New Relic Insert Key](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/insert-custom-events-insights-api#register).
 
@@ -130,9 +134,25 @@ Here is what this will look like in New Relic:
 
 Note: You can mix `method 1` and `method 2` together. In the `SERVICES` variable. I would not recommend doing this though.
 
-## New Relic Queries to View Data
+## Dashboard Examples 🗺️
+
+Below are a few screenshots of dashboards that can be created with this project:
+
+Note: *example.com would be replaced by the `serviceName` which you specify with the `SERVICES` env var*
+
+![3xx and 4xx Dashboard](assets/img/3xx-and-4xx.png)
+
+![Cache Dashboard](assets/img/cache.png)
+
+![Total Reqs Dashboard](assets/img/total-reqs.png)
+
+![2xx Dashboard](assets/img/2xx.png)
+
+## New Relic Queries to View Data 📊
 
 Here are some helpful queries in New Relic to start viewing your metrics:
+
+Hint: *You may also use the pre-made Dashboard JSON template below*
 
 * 2xx Status codes by service
 
@@ -178,11 +198,128 @@ Here are some helpful queries in New Relic to start viewing your metrics:
 
 To see more info on these queries, check out the blog post by New Relic [here](https://blog.newrelic.com/engineering/monitor-fastly-data/).
 
-## Contributing
+## Dashboard JSON Template 📋
+
+Rather than build out a monitoring Dashboard by hand (using the commands above), this repo comes with a pre-made one to get you going!
+
+You can simply `copy and paste` the JSON template located [here](assets/dashboards/new_relic.json) into New Relic and it will be created for you.
+
+New Relic Docs in-case you need them for the import - [documentation](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards/#get-started)
+
+## Exported Values 🧮
+
+All of the following values are aggregated and accessible right away in the New Relic console!
+
+```text
+service
+num_requests
+num_tls
+num_http2
+num_logs
+num_pci
+num_video
+ipv6
+pipe
+uncacheable
+shield
+shield_resp_header_bytes
+shield_resp_body_bytes
+otfp
+otfp_shield_time
+otfp_deliver_time
+otfp_manifests
+otfp_shield_resp_header_bytes
+otfp_shield_resp_body_bytes
+otfp_resp_header_bytes
+otfp_resp_body_bytes
+bandwidth
+resp_header_bytes
+header_size
+resp_body_bytes
+body_size
+req_body_bytes
+req_header_bytes
+bereq_header_bytes
+bereq_body_bytes
+billed_header_bytes
+billed_body_bytes
+status_2xx
+status_3xx
+status_4xx
+status_5xx
+status_200
+status_204
+status_301
+status_304
+status_400
+status_401
+status_403
+status_404
+status_500
+status_501
+status_502
+status_503
+status_504
+status_505
+status_1xx
+waf_logged
+waf_blocked
+waf_passed
+attack_req_body_bytes
+attack_req_header_bytes
+attack_logged_req_body_bytes
+attack_logged_req_header_bytes
+attack_blocked_req_body_bytes
+attack_blocked_req_header_bytes
+attack_passed_req_body_bytes
+attack_passed_req_header_bytes
+attack_resp_synth_bytes
+hits
+hit_ratio
+miss
+pass
+pass_time
+synth
+errors
+restarts
+hits_time
+miss_time
+tls
+tls_v10
+tls_v11
+tls_v12
+tls_v13
+imgopto
+imgopto_resp_body_bytes
+imgopto_resp_header_bytes
+imgopto_shield_resp_body_bytes
+imgopto_shield_resp_header_bytes
+object_size_1k
+object_size_10k
+object_size_100k
+object_size_1m
+object_size_10m
+object_size_100m
+object_size_1g
+recv_sub_time
+recv_sub_count
+hash_sub_time
+hash_sub_count
+deliver_sub_time
+deliver_sub_count
+hit_sub_time
+hit_sub_count
+prehash_sub_time
+prehash_sub_count
+predeliver_sub_time
+predeliver_sub_count
+```
+
+## Contributing 👩‍💻
 
 You are welcome to send pull requests to this repo. All and any contributors are welcome.
 
-## More Information
+## More Information 📖
 
 For more information on the Fastly Real-Time Analytics API, look [here](https://docs.fastly.com/api/analytics).
 
@@ -190,6 +327,6 @@ For more information on the New Relic Insights API, look [here](https://docs.new
 
 This project is provided AS-IS WITHOUT WARRANTY OR SUPPORT, although you can report issues and contribute to the project.
 
-## JavaScript version
+## JavaScript version 🔗
 
 This project is the python implementation of the original [Fastly-to-Insights](https://github.com/newrelic/fastly-to-insights) project. Check out the source project to see how this one differs and if the Python version is right for you.
