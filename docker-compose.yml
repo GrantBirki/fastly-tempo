@@ -1,8 +1,8 @@
 version: '3'
 
 services:
-  fastly-to-insights:
-    container_name: fastly-to-insights
+  fastly-tempo:
+    container_name: fastly-tempo
     env_file: 
       - creds.env
       - config.env
