@@ -1,16 +1,16 @@
-# Fastly to Insights 🚀
+# Fastly Tempo 🚀
 
-[![security-checks Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/security-checks/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions) [![python-tests Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/python-tests/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions) [![docker-build Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/docker-build/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions) [![codeQL Actions Status](https://github.com/grantbirki/fastly-to-insights/workflows/codeQL/badge.svg)](https://github.com/grantbirki/fastly-to-insights/actions)
+[![security-checks Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/security-checks/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions) [![python-tests Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/python-tests/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions) [![docker-build Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/docker-build/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions) [![codeQL Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/codeQL/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions)
 
 Monitor, Alert, and Display all your Fastly Metrics in Real-Time!
 
 This is based off the New Relic blessed way to get your Fastly metrics into New Relic Insights, packaged as a Docker container image for ease of use!
 
-In order to use the Fastly to Insights Docker image, you will need an active New Relic account with Insights, an active Fastly account with Read access, a New Relic Insights Insert key and a Fastly API Key.
+In order to use the Fastly Tempo Docker image, you will need an active New Relic account with Insights, an active Fastly account with Read access, a New Relic Insights Insert key and a Fastly API Key.
 
 ## Dashboard 🗺️
 
-Here is an example of a 4xx alert dashboard that can be created in New Relic from the `Fastly to Insights` container:
+Here is an example of a 4xx alert dashboard that can be created in New Relic from the `Fastly Tempo` container:
 
 <!-- markdownlint-disable no-inline-html -->
 <p align="center">
@@ -18,9 +18,27 @@ Here is an example of a 4xx alert dashboard that can be created in New Relic fro
 </p>
 <!-- markdownlint-enable no-inline-html -->
 
+<!-- markdownlint-disable no-inline-html -->
+<p align="center">
+  <img src="assets/img/carbon.png"/>
+</p>
+<!-- markdownlint-enable no-inline-html -->
+
+## Supported Backends 🧰
+
+Currently, there is only one support backend to send metrics to: `New Relic`
+
+However, there are plans to integrate with other providers/backends in the future for greater integrations.
+
+* New Relic: Supported ✔️
+* Datadog: Planned
+* Prometheus: Planned
+* Graphite: Planned
+* Splunk: Planned
+
 ## Quick Start ⭐
 
-Grab the image from [DockerHub](https://hub.docker.com/r/grantbirki/fastly-to-insights) 🐳
+Grab the image from [DockerHub](https://hub.docker.com/r/grantbirki/fastly-tempo) 🐳
 
 ### Using Docker-Compose (Preferred)
 
@@ -47,7 +65,7 @@ Using Docker-Compose to run this image is extremely easy.
 
 ### Using Docker
 
-1. Build: `docker build -t fastly-to-insights .`
+1. Build: `docker build -t fastly-tempo .`
 2. Run:
 
     ```bash
@@ -56,14 +74,14 @@ Using Docker-Compose to run this image is extremely easy.
       -e FASTLY_KEY='yourFastlyKey' \
       -e INSERT_KEY='yourNewRelicInsertKey' \
       -e SERVICES='ServiceId1 ServiceId2 ...' \
-      fastly-to-insights
+      fastly-tempo
     ```
 
 ## How to use this image 📚
 
 Before you get started, make sure that you have a [Fastly API Key](https://docs.fastly.com/guides/account-management-and-security/using-api-tokens) and a [New Relic Insert Key](https://docs.newrelic.com/docs/insights/insights-data-sources/custom-data/insert-custom-events-insights-api#register).
 
-The Fastly to Insights image is configured by environment variables.
+The Fastly Tempo image is configured by environment variables.
 
 These are required:
 
@@ -100,7 +118,7 @@ docker run \
   -e FASTLY_KEY='yourFastlyKey' \
   -e INSERT_KEY='yourNewRelicInsertKey' \
   -e SERVICES='ServiceId1 ServiceId2 ...' \
-  fastly-to-insights
+  fastly-tempo
 ```
 
 You may optionally add `-e SILENT=True` or `-e INTERVAL=<time in seconds>` for custom configuration.
@@ -123,7 +141,7 @@ docker run \
   -e FASTLY_KEY='yourFastlyKey' \
   -e INSERT_KEY='yourNewRelicInsertKey' \
   -e SERVICES='NameOfService1:ServiceId1 NameOfService2:ServiceId2 ...' \
-  fastly-to-insights
+  fastly-tempo
 ```
 
 You may optionally add `-e SILENT=True` or `-e INTERVAL=<time in seconds>` for custom configuration.
@@ -329,6 +347,10 @@ For more information on the New Relic Insights API, look [here](https://docs.new
 
 This project is provided AS-IS WITHOUT WARRANTY OR SUPPORT, although you can report issues and contribute to the project.
 
+### Medium
+
+Feel free to checkout a write-up on this project on [Medium.com](https://birki.medium.com/) for more information as well.
+
 ## JavaScript version 🔗
 
-This project is the python implementation of the original [Fastly-to-Insights](https://github.com/newrelic/fastly-to-insights) project. Check out the source project to see how this one differs and if the Python version is right for you.
+This project is the python implementation of the original [fastly-to-insights](https://github.com/newrelic/fastly-to-insights) project. Check out the source project to see how this one differs and if the Python version is right for you.

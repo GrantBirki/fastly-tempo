@@ -1,5 +1,5 @@
 """
-Fastly to Insights
+Fastly Tempo
 """
 from collections import defaultdict
 import json
@@ -340,7 +340,7 @@ def main():
         print("""
 
         ############################################################
-        [#] Starting the Fastly -> New Relic Insights Log Aggregator
+        [#] Starting: FASTLY TEMPO 
         ############################################################
         
         """)

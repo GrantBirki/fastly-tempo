@@ -19,7 +19,7 @@
             },
             "title": "",
             "rawConfiguration": {
-              "text": "# Fastly Dashboard ⏰\n\nThis Dashboard displays near real-time aggregated data from Fastly. Use this Dashboard to view the health and status of various Fastly services.\n\n## Repo\n\nThe repo which contains the code behind this Dashboard can be found here: [GitHub](https://github.com/GrantBirki/fastly-to-insights)"
+              "text": "# Fastly Tempo ⏰\n\nThis Dashboard displays near real-time aggregated data from Fastly. Use this Dashboard to view the health and status of various Fastly services.\n\n## Repo\n\nThe repo which contains the code behind this Dashboard can be found here: [GitHub](https://github.com/GrantBirki/fastly-tempo)"
             },
             "linkedEntityGuids": null
           },

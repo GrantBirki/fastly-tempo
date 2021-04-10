@@ -5,4 +5,4 @@ run:
 	@echo "\e[34m[#] Building docker container\e[0m"
 	@docker-compose up --build -d || exit 1
 
-	@echo "\e[32m[#] Fastly-to-Insights container is now running!\e[0m"
+	@echo "\e[32m[#] Fastly-Tempo container is now running!\e[0m"
