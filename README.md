@@ -354,3 +354,5 @@ Feel free to checkout a write-up on this project on [Medium.com](https://birki.m
 ## JavaScript version 🔗
 
 This project is the python implementation of the original [fastly-to-insights](https://github.com/newrelic/fastly-to-insights) project. Check out the source project to see how this one differs and if the Python version is right for you.
+
+requirments
