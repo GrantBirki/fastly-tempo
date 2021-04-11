@@ -38,4 +38,7 @@ jobs:
         sudo apt install pylint -y
         pylint -E app.py || { echo "Failure! - Python Error Checks Failed - $?" ; exit 1; }
         echo "Success! - Python Error Checks Passed"
-
+    - name: python vuln check
+      run: |
+        pip install safety
+        safety check
