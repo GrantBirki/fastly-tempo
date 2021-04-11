@@ -222,7 +222,7 @@ Rather than build out a monitoring Dashboard by hand (using the commands above),
 
 You can simply `copy and paste` the JSON template located [here](assets/dashboards/new_relic.json) into New Relic and it will be created for you.
 
-Note: You **will** need to **change** all occurances of the `"accountId": 1234567` value in the `.json` file to your own New Relic accountId.
+Note: You **will** need to **change** all occurrences of the `"accountId": 1234567` value in the `.json` file to your own New Relic accountId.
 
 New Relic Docs in-case you need them for the import - [documentation](https://docs.newrelic.com/docs/query-your-data/explore-query-data/dashboards/introduction-dashboards/#get-started)
 
