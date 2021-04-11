@@ -349,7 +349,7 @@ This project is provided AS-IS WITHOUT WARRANTY OR SUPPORT, although you can rep
 
 ### Medium
 
-Feel free to checkout a write-up on this project on [Medium.com](https://birki.medium.com/fastly-tempo-a-real-time-data-pipeline-for-fastlys-cdn-f1d5831a169c) for more information as well. this is a colour
+Feel free to checkout a write-up on this project on [Medium.com](https://birki.medium.com/fastly-tempo-a-real-time-data-pipeline-for-fastlys-cdn-f1d5831a169c) for more information as well.
 
 ## JavaScript version 🔗
 
