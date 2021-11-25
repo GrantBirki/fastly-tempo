@@ -8,6 +8,8 @@ This is based off the New Relic blessed way to get your Fastly metrics into New 
 
 In order to use the Fastly Tempo Docker image, you will need an active New Relic account with Insights, an active Fastly account with Read access, a New Relic Insights Insert key and a Fastly API Key.
 
+[🗨️ Fastly's tweet about this project!](https://twitter.com/fastly/status/1410007456256774152)
+
 ## Dashboard 🗺️
 
 Here is an example of a 4xx alert dashboard that can be created in New Relic from the `Fastly Tempo` container:
