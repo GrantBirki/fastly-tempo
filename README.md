@@ -1,8 +1,19 @@
-# Fastly Tempo 🚀
+<h1 align="center">Fastly Tempo 🚀</h1>
 
-[![security-checks Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/security-checks/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions) [![python-tests Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/python-tests/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions) [![docker-build Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/docker-build/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions) [![codeQL Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/codeQL/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions)
+<p align="center">
+  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/security-checks.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/security-checks.yml/badge.svg?event=push" alt="security-checks" height="18"></a>
+  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/python-tests.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/python-tests.yml/badge.svg?event=push" alt="python-tests"/></a>
+  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/docker-build.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/docker-build.yml/badge.svg?event=push" alt="docker-build"/></a>
+  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/codeQL.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/codeQL.yml/badge.svg?event=push" alt="codeQL"/></a>
+</p>
 
-Monitor, Alert, and Display all your Fastly Metrics in Real-Time!
+<p align="center">
+  <img src="https://img.shields.io/docker/pulls/grantbirki/fastly-tempo.svg" alt="docker-pulls"/>
+</p>
+
+<p align="center">
+  Monitor, Alert, and Display all your Fastly Metrics in Real-Time!
+</p>
 
 This is based off the New Relic blessed way to get your Fastly metrics into New Relic Insights, packaged as a Docker container image for ease of use!
 
