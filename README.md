@@ -1,10 +1,10 @@
 <h1 align="center">Fastly Tempo 🚀</h1>
 
 <p align="center">
-  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/security-checks.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/security-checks.yml/badge.svg?event=push" alt="security-checks" height="18"></a>
-  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/python-tests.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/python-tests.yml/badge.svg?event=push" alt="python-tests"/></a>
-  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/docker-build.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/docker-build.yml/badge.svg?event=push" alt="docker-build"/></a>
-  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/codeQL.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/codeQL.yml/badge.svg?event=push" alt="codeQL"/></a>
+  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/snky.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/snyk.yml/badge.svg?event=push" alt="snyk" height="18"></a>
+  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/python-app.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/python-app.yml/badge.svg?event=push" alt="tests"/></a>
+  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/docker-push.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/docker-push.yml/badge.svg" alt="docker-build"/></a>
+  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/codeql-analysis.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/codeql-analysis.yml/badge.svg?event=push" alt="codeQL"/></a>
 </p>
 
 <p align="center">
