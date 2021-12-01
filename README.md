@@ -1,19 +1,8 @@
-<h1 align="center">Fastly Tempo 🚀</h1>
+# Fastly Tempo 🚀
 
-<p align="center">
-  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/snky.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/snyk.yml/badge.svg?event=push" alt="snyk" height="18"></a>
-  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/python-app.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/python-app.yml/badge.svg?event=push" alt="tests"/></a>
-  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/docker-push.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/docker-push.yml/badge.svg" alt="docker-build"/></a>
-  <a href="https://github.com/GrantBirki/fastly-tempo/actions/workflows/codeql-analysis.yml"><img src="https://github.com/GrantBirki/fastly-tempo/actions/workflows/codeql-analysis.yml/badge.svg?event=push" alt="codeQL"/></a>
-</p>
+[![security-checks Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/security-checks/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions) [![python-tests Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/python-tests/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions) [![docker-build Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/docker-build/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions) [![codeQL Actions Status](https://github.com/grantbirki/fastly-tempo/workflows/codeQL/badge.svg)](https://github.com/grantbirki/fastly-tempo/actions)
 
-<p align="center">
-  <img src="https://img.shields.io/docker/pulls/grantbirki/fastly-tempo.svg" alt="docker-pulls"/>
-</p>
-
-<p align="center">
-  Monitor, Alert, and Display all your Fastly Metrics in Real-Time!
-</p>
+[![Docker Pulls](https://img.shields.io/docker/pulls/grantbirki/fastly-tempo.svg)](https://img.shields.io/docker/pulls/grantbirki/fastly-tempo.svg)
 
 This is based off the New Relic blessed way to get your Fastly metrics into New Relic Insights, packaged as a Docker container image for ease of use!
 
