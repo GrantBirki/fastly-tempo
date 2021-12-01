@@ -301,6 +301,7 @@ def send_to_insights(service):
     Sends a POST request with aggregated data to New Relic Insights
     If the request fails, it is printed out and returns 'False'
     - NRstatus ~ New Relic HTTP status code
+    :return: 'True' if successful, 'False' if not
     """
 
     try:
